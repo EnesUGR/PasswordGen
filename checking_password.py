@@ -3,15 +3,15 @@ from password_strength import PasswordPolicy
 
 
 class Checking:
-    def __init__(self, password_text:str):
+    def __init__(self, password_text:str, length=8,uppercase=2,numbers=2,special=2,nonletters=2,entropybits=30,strength=0.66):
         policy = PasswordPolicy.from_names(
-            length=8,
-            uppercase=2,
-            numbers=2,
-            special=2,
-            nonletters=2,
-            entropybits=30, #Value that defines how much variety it has
-            strength=0.66 #Complexity; range of 0.00..0.99. Good starting at 0.66
+            length=length,
+            uppercase=uppercase,
+            numbers=numbers,
+            special=special,
+            nonletters=nonletters,
+            entropybits=entropybits, #Value that defines how much variety it has
+            strength=strength #Complexity; range of 0.00..0.99. Good starting at 0.66
         )
 
         self.password = policy.password(password_text)
