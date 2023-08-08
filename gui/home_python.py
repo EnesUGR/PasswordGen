@@ -16,9 +16,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QLineEdit, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QStatusBar, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLineEdit, QMainWindow,
+    QMenu, QMenuBar, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QStatusBar, QToolButton,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -37,6 +38,8 @@ class Ui_MainWindow(object):
         self.page_home.setObjectName(u"page_home")
         self.verticalLayout_2 = QVBoxLayout(self.page_home)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.lineEdit_password = QLineEdit(self.page_home)
         self.lineEdit_password.setObjectName(u"lineEdit_password")
         self.lineEdit_password.setMinimumSize(QSize(0, 60))
@@ -48,19 +51,45 @@ class Ui_MainWindow(object):
         self.lineEdit_password.setAlignment(Qt.AlignCenter)
         self.lineEdit_password.setReadOnly(True)
 
-        self.verticalLayout_2.addWidget(self.lineEdit_password)
+        self.horizontalLayout_2.addWidget(self.lineEdit_password)
+
+        self.toolButton_copy = QToolButton(self.page_home)
+        self.toolButton_copy.setObjectName(u"toolButton_copy")
+        self.toolButton_copy.setMinimumSize(QSize(30, 60))
+        font1 = QFont()
+        font1.setPointSize(12)
+        font1.setItalic(True)
+        self.toolButton_copy.setFont(font1)
+
+        self.horizontalLayout_2.addWidget(self.toolButton_copy)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.pushButton_generatePassword = QPushButton(self.page_home)
         self.pushButton_generatePassword.setObjectName(u"pushButton_generatePassword")
         self.pushButton_generatePassword.setMinimumSize(QSize(0, 60))
         self.pushButton_generatePassword.setFont(font)
         self.pushButton_generatePassword.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_2.addWidget(self.pushButton_generatePassword)
+        self.horizontalLayout.addWidget(self.pushButton_generatePassword)
+
+        self.pushButton_check = QPushButton(self.page_home)
+        self.pushButton_check.setObjectName(u"pushButton_check")
+        self.pushButton_check.setMinimumSize(QSize(0, 60))
+        self.pushButton_check.setFont(font)
+        self.pushButton_check.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout.addWidget(self.pushButton_check)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         self.stackedWidget.addWidget(self.page_home)
         self.page_check = QWidget()
@@ -92,7 +121,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"PasswordGen", None))
         self.actionExit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.lineEdit_password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"P A S S W O R D", None))
+        self.toolButton_copy.setText(QCoreApplication.translate("MainWindow", u"C", None))
         self.pushButton_generatePassword.setText(QCoreApplication.translate("MainWindow", u"Generate Password", None))
+        self.pushButton_check.setText(QCoreApplication.translate("MainWindow", u"Check Password", None))
         self.menuMenu.setTitle(QCoreApplication.translate("MainWindow", u"Menu", None))
     # retranslateUi
 
