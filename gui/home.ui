@@ -68,8 +68,14 @@
               <italic>true</italic>
              </font>
             </property>
+            <property name="toolTip">
+             <string>Copy password (Press Ctrl+C)</string>
+            </property>
             <property name="text">
              <string>C</string>
+            </property>
+            <property name="shortcut">
+             <string>Ctrl+C</string>
             </property>
            </widget>
           </item>
@@ -158,7 +164,7 @@
            </font>
           </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string>PASSWORD</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -557,7 +563,7 @@ Patterns</string>
              </font>
             </property>
             <property name="text">
-             <string>0</string>
+             <string>None</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -589,6 +595,319 @@ Patterns</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page_settings">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QGroupBox" name="groupBox_1">
+          <property name="title">
+           <string>Password Generate Options</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetMinimumSize</enum>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QCheckBox" name="checkBox_AZ">
+               <property name="text">
+                <string>A-Z</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_az">
+               <property name="text">
+                <string>a-z</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_09">
+               <property name="text">
+                <string>0-9</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_SpecialChars">
+               <property name="text">
+                <string>Special Chars</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item alignment="Qt::AlignLeft">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Length:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_length">
+               <property name="minimum">
+                <number>4</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="value">
+                <number>8</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="font">
+           <font>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="title">
+           <string>Password Check Policy</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0">
+           <property name="spacing">
+            <number>20</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>Length:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_checkLength">
+                 <property name="minimum">
+                  <number>4</number>
+                 </property>
+                 <property name="maximum">
+                  <number>50</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>Uppercase</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_checkUppercase">
+                 <property name="minimum">
+                  <number>2</number>
+                 </property>
+                 <property name="maximum">
+                  <number>30</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>Numbers:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_checkNumbers">
+                 <property name="minimum">
+                  <number>2</number>
+                 </property>
+                 <property name="maximum">
+                  <number>30</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <item>
+                <widget class="QLabel" name="label_17">
+                 <property name="text">
+                  <string>Special Char:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_checkSpecial">
+                 <property name="minimum">
+                  <number>2</number>
+                 </property>
+                 <property name="maximum">
+                  <number>30</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <item>
+                <widget class="QLabel" name="label_18">
+                 <property name="toolTip">
+                  <string>Entropi bitleri, şifrenizin ne kadar çeşitliliğe sahip olduğunu tanımlayan bir kavramdır.</string>
+                 </property>
+                 <property name="text">
+                  <string>Entropybits:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_checkEntropybits">
+                 <property name="toolTip">
+                  <string>Entropi bitleri, şifrenizin ne kadar çeşitliliğe sahip olduğunu tanımlayan bir kavramdır.</string>
+                 </property>
+                 <property name="whatsThis">
+                  <string/>
+                 </property>
+                 <property name="minimum">
+                  <number>2</number>
+                 </property>
+                 <property name="maximum">
+                  <number>30</number>
+                 </property>
+                 <property name="value">
+                  <number>20</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="toolTip">
+                  <string>Entropi bitleri önemlidir, ancak anlaşılması zordur. Daha da iyi, daha sezgisel bir test, parolanın &quot;yeterince karmaşık&quot; olmasını gerektirmektir. Karmaşıklık, 0.00..0.99 aralığında bir sayıdır. İyi, güçlü şifreler 0,66'dan başlar.</string>
+                 </property>
+                 <property name="text">
+                  <string>Strength:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="spinBox_checkScore">
+                 <property name="toolTip">
+                  <string>Parolanızın Güç Sınırınızı Belirler. (Önerilen 0,66 Değiştirilmesi Önerilmez.)</string>
+                 </property>
+                 <property name="maximum">
+                  <double>1.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.660000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_bottom">
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="pushButton_gohome_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>Home Page</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButton">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <italic>true</italic>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>Reset to default (Press R)</string>
+            </property>
+            <property name="text">
+             <string>R</string>
+            </property>
+            <property name="shortcut">
+             <string>R</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -606,6 +925,7 @@ Patterns</string>
     <property name="title">
      <string>Menu</string>
     </property>
+    <addaction name="actionSettings"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuMenu"/>
@@ -614,6 +934,14 @@ Patterns</string>
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
    </property>
   </action>
  </widget>

@@ -16,10 +16,12 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDoubleSpinBox, QGridLayout,
+    QGroupBox, QHBoxLayout, QLabel, QLayout,
     QLineEdit, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QSpacerItem, QStackedWidget,
-    QStatusBar, QToolButton, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
+    QStackedWidget, QStatusBar, QToolButton, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -28,6 +30,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(524, 599)
         self.actionExit = QAction(MainWindow)
         self.actionExit.setObjectName(u"actionExit")
+        self.actionSettings = QAction(MainWindow)
+        self.actionSettings.setObjectName(u"actionSettings")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -293,6 +297,212 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.pushButton_gohome)
 
         self.stackedWidget.addWidget(self.page_check)
+        self.page_settings = QWidget()
+        self.page_settings.setObjectName(u"page_settings")
+        self.verticalLayout_7 = QVBoxLayout(self.page_settings)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.groupBox_1 = QGroupBox(self.page_settings)
+        self.groupBox_1.setObjectName(u"groupBox_1")
+        self.groupBox_1.setFlat(True)
+        self.verticalLayout_4 = QVBoxLayout(self.groupBox_1)
+        self.verticalLayout_4.setSpacing(10)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setSizeConstraint(QLayout.SetMinimumSize)
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.checkBox_AZ = QCheckBox(self.groupBox_1)
+        self.checkBox_AZ.setObjectName(u"checkBox_AZ")
+        self.checkBox_AZ.setChecked(True)
+
+        self.horizontalLayout_3.addWidget(self.checkBox_AZ)
+
+        self.checkBox_az = QCheckBox(self.groupBox_1)
+        self.checkBox_az.setObjectName(u"checkBox_az")
+        self.checkBox_az.setChecked(True)
+
+        self.horizontalLayout_3.addWidget(self.checkBox_az)
+
+        self.checkBox_09 = QCheckBox(self.groupBox_1)
+        self.checkBox_09.setObjectName(u"checkBox_09")
+        self.checkBox_09.setChecked(True)
+
+        self.horizontalLayout_3.addWidget(self.checkBox_09)
+
+        self.checkBox_SpecialChars = QCheckBox(self.groupBox_1)
+        self.checkBox_SpecialChars.setObjectName(u"checkBox_SpecialChars")
+        self.checkBox_SpecialChars.setChecked(True)
+
+        self.horizontalLayout_3.addWidget(self.checkBox_SpecialChars)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_3)
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.label_2 = QLabel(self.groupBox_1)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout_4.addWidget(self.label_2, 0, Qt.AlignLeft)
+
+        self.spinBox_length = QSpinBox(self.groupBox_1)
+        self.spinBox_length.setObjectName(u"spinBox_length")
+        self.spinBox_length.setMinimum(4)
+        self.spinBox_length.setMaximum(100)
+        self.spinBox_length.setValue(8)
+
+        self.horizontalLayout_4.addWidget(self.spinBox_length)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_4)
+
+
+        self.verticalLayout_7.addWidget(self.groupBox_1)
+
+        self.groupBox_2 = QGroupBox(self.page_settings)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        font4 = QFont()
+        font4.setBold(False)
+        self.groupBox_2.setFont(font4)
+        self.groupBox_2.setFlat(True)
+        self.verticalLayout_5 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_5.setSpacing(20)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.verticalLayout_6 = QVBoxLayout()
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_14 = QLabel(self.groupBox_2)
+        self.label_14.setObjectName(u"label_14")
+
+        self.horizontalLayout_5.addWidget(self.label_14)
+
+        self.spinBox_checkLength = QSpinBox(self.groupBox_2)
+        self.spinBox_checkLength.setObjectName(u"spinBox_checkLength")
+        self.spinBox_checkLength.setMinimum(4)
+        self.spinBox_checkLength.setMaximum(50)
+
+        self.horizontalLayout_5.addWidget(self.spinBox_checkLength)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.label_15 = QLabel(self.groupBox_2)
+        self.label_15.setObjectName(u"label_15")
+
+        self.horizontalLayout_6.addWidget(self.label_15)
+
+        self.spinBox_checkUppercase = QSpinBox(self.groupBox_2)
+        self.spinBox_checkUppercase.setObjectName(u"spinBox_checkUppercase")
+        self.spinBox_checkUppercase.setMinimum(2)
+        self.spinBox_checkUppercase.setMaximum(30)
+
+        self.horizontalLayout_6.addWidget(self.spinBox_checkUppercase)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_6)
+
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.label_16 = QLabel(self.groupBox_2)
+        self.label_16.setObjectName(u"label_16")
+
+        self.horizontalLayout_7.addWidget(self.label_16)
+
+        self.spinBox_checkNumbers = QSpinBox(self.groupBox_2)
+        self.spinBox_checkNumbers.setObjectName(u"spinBox_checkNumbers")
+        self.spinBox_checkNumbers.setMinimum(2)
+        self.spinBox_checkNumbers.setMaximum(30)
+
+        self.horizontalLayout_7.addWidget(self.spinBox_checkNumbers)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_7)
+
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.label_17 = QLabel(self.groupBox_2)
+        self.label_17.setObjectName(u"label_17")
+
+        self.horizontalLayout_8.addWidget(self.label_17)
+
+        self.spinBox_checkSpecial = QSpinBox(self.groupBox_2)
+        self.spinBox_checkSpecial.setObjectName(u"spinBox_checkSpecial")
+        self.spinBox_checkSpecial.setMinimum(2)
+        self.spinBox_checkSpecial.setMaximum(30)
+
+        self.horizontalLayout_8.addWidget(self.spinBox_checkSpecial)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_8)
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.label_18 = QLabel(self.groupBox_2)
+        self.label_18.setObjectName(u"label_18")
+
+        self.horizontalLayout_10.addWidget(self.label_18)
+
+        self.spinBox_checkEntropybits = QSpinBox(self.groupBox_2)
+        self.spinBox_checkEntropybits.setObjectName(u"spinBox_checkEntropybits")
+        self.spinBox_checkEntropybits.setMinimum(2)
+        self.spinBox_checkEntropybits.setMaximum(30)
+        self.spinBox_checkEntropybits.setValue(20)
+
+        self.horizontalLayout_10.addWidget(self.spinBox_checkEntropybits)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_10)
+
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.label_19 = QLabel(self.groupBox_2)
+        self.label_19.setObjectName(u"label_19")
+
+        self.horizontalLayout_9.addWidget(self.label_19)
+
+        self.spinBox_checkScore = QDoubleSpinBox(self.groupBox_2)
+        self.spinBox_checkScore.setObjectName(u"spinBox_checkScore")
+        self.spinBox_checkScore.setMaximum(1.000000000000000)
+        self.spinBox_checkScore.setValue(0.660000000000000)
+
+        self.horizontalLayout_9.addWidget(self.spinBox_checkScore)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_9)
+
+
+        self.verticalLayout_5.addLayout(self.verticalLayout_6)
+
+
+        self.verticalLayout_7.addWidget(self.groupBox_2)
+
+        self.horizontalLayout_bottom = QHBoxLayout()
+        self.horizontalLayout_bottom.setObjectName(u"horizontalLayout_bottom")
+        self.horizontalLayout_bottom.setContentsMargins(-1, 20, -1, -1)
+        self.pushButton_gohome_2 = QPushButton(self.page_settings)
+        self.pushButton_gohome_2.setObjectName(u"pushButton_gohome_2")
+        self.pushButton_gohome_2.setMinimumSize(QSize(0, 60))
+        self.pushButton_gohome_2.setFont(font)
+        self.pushButton_gohome_2.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_bottom.addWidget(self.pushButton_gohome_2)
+
+        self.toolButton = QToolButton(self.page_settings)
+        self.toolButton.setObjectName(u"toolButton")
+        self.toolButton.setMinimumSize(QSize(30, 60))
+        font5 = QFont()
+        font5.setItalic(True)
+        self.toolButton.setFont(font5)
+
+        self.horizontalLayout_bottom.addWidget(self.toolButton)
+
+
+        self.verticalLayout_7.addLayout(self.horizontalLayout_bottom)
+
+        self.stackedWidget.addWidget(self.page_settings)
 
         self.verticalLayout.addWidget(self.stackedWidget)
 
@@ -308,6 +518,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuMenu.menuAction())
+        self.menuMenu.addAction(self.actionSettings)
         self.menuMenu.addAction(self.actionExit)
 
         self.retranslateUi(MainWindow)
@@ -321,11 +532,21 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"PasswordGen", None))
         self.actionExit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
+        self.actionSettings.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
+#if QT_CONFIG(shortcut)
+        self.actionSettings.setShortcut(QCoreApplication.translate("MainWindow", u"F1", None))
+#endif // QT_CONFIG(shortcut)
         self.lineEdit_password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"P A S S W O R D", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_copy.setToolTip(QCoreApplication.translate("MainWindow", u"Copy password (Press Ctrl+C)", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton_copy.setText(QCoreApplication.translate("MainWindow", u"C", None))
+#if QT_CONFIG(shortcut)
+        self.toolButton_copy.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+C", None))
+#endif // QT_CONFIG(shortcut)
         self.pushButton_generatePassword.setText(QCoreApplication.translate("MainWindow", u"Generate Password", None))
         self.pushButton_check.setText(QCoreApplication.translate("MainWindow", u"Check Password", None))
-        self.labelChecking_password.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.labelChecking_password.setText(QCoreApplication.translate("MainWindow", u"PASSWORD", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Letters", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Entropybits", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Uppercases", None))
@@ -350,8 +571,44 @@ class Ui_MainWindow(object):
         self.labelChecking_specialcase.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.labelChecking_repeated.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.labelChecking_combs.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.labelChecking_chars.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.labelChecking_chars.setText(QCoreApplication.translate("MainWindow", u"None", None))
         self.pushButton_gohome.setText(QCoreApplication.translate("MainWindow", u"Home Page", None))
+        self.groupBox_1.setTitle(QCoreApplication.translate("MainWindow", u"Password Generate Options", None))
+        self.checkBox_AZ.setText(QCoreApplication.translate("MainWindow", u"A-Z", None))
+        self.checkBox_az.setText(QCoreApplication.translate("MainWindow", u"a-z", None))
+        self.checkBox_09.setText(QCoreApplication.translate("MainWindow", u"0-9", None))
+        self.checkBox_SpecialChars.setText(QCoreApplication.translate("MainWindow", u"Special Chars", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Length:", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Password Check Policy", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Length:", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Uppercase", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Numbers:", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Special Char:", None))
+#if QT_CONFIG(tooltip)
+        self.label_18.setToolTip(QCoreApplication.translate("MainWindow", u"Entropi bitleri, \u015fifrenizin ne kadar \u00e7e\u015fitlili\u011fe sahip oldu\u011funu tan\u0131mlayan bir kavramd\u0131r.", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Entropybits:", None))
+#if QT_CONFIG(tooltip)
+        self.spinBox_checkEntropybits.setToolTip(QCoreApplication.translate("MainWindow", u"Entropi bitleri, \u015fifrenizin ne kadar \u00e7e\u015fitlili\u011fe sahip oldu\u011funu tan\u0131mlayan bir kavramd\u0131r.", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(whatsthis)
+        self.spinBox_checkEntropybits.setWhatsThis("")
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(tooltip)
+        self.label_19.setToolTip(QCoreApplication.translate("MainWindow", u"Entropi bitleri \u00f6nemlidir, ancak anla\u015f\u0131lmas\u0131 zordur. Daha da iyi, daha sezgisel bir test, parolan\u0131n \"yeterince karma\u015f\u0131k\" olmas\u0131n\u0131 gerektirmektir. Karma\u015f\u0131kl\u0131k, 0.00..0.99 aral\u0131\u011f\u0131nda bir say\u0131d\u0131r. \u0130yi, g\u00fc\u00e7l\u00fc \u015fifreler 0,66'dan ba\u015flar.", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Strength:", None))
+#if QT_CONFIG(tooltip)
+        self.spinBox_checkScore.setToolTip(QCoreApplication.translate("MainWindow", u"Parolan\u0131z\u0131n G\u00fc\u00e7 S\u0131n\u0131r\u0131n\u0131z\u0131 Belirler. (\u00d6nerilen 0,66 De\u011fi\u015ftirilmesi \u00d6nerilmez.)", None))
+#endif // QT_CONFIG(tooltip)
+        self.pushButton_gohome_2.setText(QCoreApplication.translate("MainWindow", u"Home Page", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton.setToolTip(QCoreApplication.translate("MainWindow", u"Reset to default (Press R)", None))
+#endif // QT_CONFIG(tooltip)
+        self.toolButton.setText(QCoreApplication.translate("MainWindow", u"R", None))
+#if QT_CONFIG(shortcut)
+        self.toolButton.setShortcut(QCoreApplication.translate("MainWindow", u"R", None))
+#endif // QT_CONFIG(shortcut)
         self.menuMenu.setTitle(QCoreApplication.translate("MainWindow", u"Menu", None))
     # retranslateUi
 

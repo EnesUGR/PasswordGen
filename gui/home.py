@@ -15,6 +15,8 @@ class Home(QMainWindow):
         self.ui.toolButton_copy.clicked.connect(self.copy_password)
         self.ui.pushButton_check.clicked.connect(self.check)
         self.ui.pushButton_gohome.clicked.connect(lambda : self.ui.stackedWidget.setCurrentWidget(self.ui.page_home))
+        self.ui.actionSettings.triggered.connect(lambda : self.ui.stackedWidget.setCurrentWidget(self.ui.page_settings))
+        self.ui.pushButton_gohome_2.clicked.connect(lambda : self.ui.stackedWidget.setCurrentWidget(self.ui.page_home))
 
     def copy_password(self):
         self.ui.lineEdit_password.selectAll()
