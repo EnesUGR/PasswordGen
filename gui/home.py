@@ -61,6 +61,22 @@ class Home(QMainWindow):
             self.ui.labelChecking_combs.setText(format_large_number(int(ch_details["combs"])))
             self.ui.labelChecking_combs.setToolTip(ch_details["combs"])
         set_text()
+        def diff_color():
+            if pcp["strengthC"] <= float(self.ui.labelChecking_score.text()): self.ui.labelChecking_score.setStyleSheet("color: green;")
+            else: self.ui.labelChecking_score.setStyleSheet("color: red;")
+            if pcp["eabitC"] <= float(self.ui.labelChecking_eabits.text()): self.ui.labelChecking_eabits.setStyleSheet("color: green;")
+            else: self.ui.labelChecking_eabits.setStyleSheet("color: red;")
+            if pcp["upperC"] <= float(self.ui.labelChecking_uppercase.text()): self.ui.labelChecking_uppercase.setStyleSheet("color: green;")
+            else: self.ui.labelChecking_uppercase.setStyleSheet("color: red;")
+            if pcp["numbersC"] <= float(self.ui.labelChecking_nums.text()): self.ui.labelChecking_nums.setStyleSheet("color: green;")
+            else: self.ui.labelChecking_nums.setStyleSheet("color: red;")
+            if pcp["specialC"] <= float(self.ui.labelChecking_specialcase.text()): self.ui.labelChecking_specialcase.setStyleSheet("color: green;")
+            else: self.ui.labelChecking_specialcase.setStyleSheet("color: red;")
+            if 0.2 > float(self.ui.labelChecking_weakFactor.text()): self.ui.labelChecking_weakFactor.setStyleSheet("color: green;")
+            else: self.ui.labelChecking_weakFactor.setStyleSheet("color: red;")
+            if ch.get_result():self.ui.labelChecking_password.setStyleSheet("color: #073f0b;")
+            else:self.ui.labelChecking_password.setStyleSheet("color: #8d5501;")
+        diff_color()
 
     def set_tool_tips(self):
         self.ui.labelChecking_score.setToolTip('An even better, more intuitive test, is to require the password to be "complex enough". Complexity is a number in the range of 0.00..0.99. Good, strong passwords start at 0.66.')
@@ -112,7 +128,7 @@ def run_ui():
 
 
 def format_large_number(number:int) -> str:
-    suffixes = ["", "K", "M", "B", "T"]
+    suffixes = ["", "K", "M", "B", "T"] #Thousand ,Million ,Billion ,Trillion
     for suffix in suffixes:
         if abs(number) < 1000:
             return f"{number:.2f}{suffix}"
