@@ -43,14 +43,23 @@
             <property name="styleSheet">
              <string notr="true"/>
             </property>
+            <property name="frame">
+             <bool>true</bool>
+            </property>
+            <property name="cursorPosition">
+             <number>0</number>
+            </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="placeholderText">
              <string>P A S S W O R D</string>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -160,6 +169,7 @@
           </property>
           <property name="font">
            <font>
+            <pointsize>12</pointsize>
             <bold>true</bold>
            </font>
           </property>
@@ -722,6 +732,9 @@ Patterns</string>
                  <property name="maximum">
                   <number>50</number>
                  </property>
+                 <property name="value">
+                  <number>8</number>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -816,7 +829,7 @@ Patterns</string>
                   <number>30</number>
                  </property>
                  <property name="value">
-                  <number>20</number>
+                  <number>30</number>
                  </property>
                 </widget>
                </item>
@@ -860,7 +873,7 @@ Patterns</string>
            <number>20</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_gohome_2">
+           <widget class="QPushButton" name="pushButton_save">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -876,12 +889,12 @@ Patterns</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>Home Page</string>
+             <string>Save</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="toolButton">
+           <widget class="QToolButton" name="toolButton_reset">
             <property name="minimumSize">
              <size>
               <width>30</width>
@@ -925,7 +938,9 @@ Patterns</string>
     <property name="title">
      <string>Menu</string>
     </property>
+    <addaction name="actionHome"/>
     <addaction name="actionSettings"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuMenu"/>
@@ -939,6 +954,14 @@ Patterns</string>
   <action name="actionSettings">
    <property name="text">
     <string>Settings</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </action>
+  <action name="actionHome">
+   <property name="text">
+    <string>Home</string>
    </property>
    <property name="shortcut">
     <string>F1</string>

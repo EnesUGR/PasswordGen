@@ -32,6 +32,8 @@ class Ui_MainWindow(object):
         self.actionExit.setObjectName(u"actionExit")
         self.actionSettings = QAction(MainWindow)
         self.actionSettings.setObjectName(u"actionSettings")
+        self.actionHome = QAction(MainWindow)
+        self.actionHome.setObjectName(u"actionHome")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -53,7 +55,8 @@ class Ui_MainWindow(object):
         self.lineEdit_password.setCursor(QCursor(Qt.ArrowCursor))
         self.lineEdit_password.setStyleSheet(u"")
         self.lineEdit_password.setAlignment(Qt.AlignCenter)
-        self.lineEdit_password.setReadOnly(True)
+        self.lineEdit_password.setReadOnly(False)
+        self.lineEdit_password.setClearButtonEnabled(True)
 
         self.horizontalLayout_2.addWidget(self.lineEdit_password)
 
@@ -105,6 +108,7 @@ class Ui_MainWindow(object):
         self.labelChecking_password.setMinimumSize(QSize(0, 10))
         self.labelChecking_password.setMaximumSize(QSize(16777215, 20))
         font2 = QFont()
+        font2.setPointSize(12)
         font2.setBold(True)
         self.labelChecking_password.setFont(font2)
         self.labelChecking_password.setAlignment(Qt.AlignCenter)
@@ -381,6 +385,7 @@ class Ui_MainWindow(object):
         self.spinBox_checkLength.setObjectName(u"spinBox_checkLength")
         self.spinBox_checkLength.setMinimum(4)
         self.spinBox_checkLength.setMaximum(50)
+        self.spinBox_checkLength.setValue(8)
 
         self.horizontalLayout_5.addWidget(self.spinBox_checkLength)
 
@@ -449,7 +454,7 @@ class Ui_MainWindow(object):
         self.spinBox_checkEntropybits.setObjectName(u"spinBox_checkEntropybits")
         self.spinBox_checkEntropybits.setMinimum(2)
         self.spinBox_checkEntropybits.setMaximum(30)
-        self.spinBox_checkEntropybits.setValue(20)
+        self.spinBox_checkEntropybits.setValue(30)
 
         self.horizontalLayout_10.addWidget(self.spinBox_checkEntropybits)
 
@@ -482,22 +487,22 @@ class Ui_MainWindow(object):
         self.horizontalLayout_bottom = QHBoxLayout()
         self.horizontalLayout_bottom.setObjectName(u"horizontalLayout_bottom")
         self.horizontalLayout_bottom.setContentsMargins(-1, 20, -1, -1)
-        self.pushButton_gohome_2 = QPushButton(self.page_settings)
-        self.pushButton_gohome_2.setObjectName(u"pushButton_gohome_2")
-        self.pushButton_gohome_2.setMinimumSize(QSize(0, 60))
-        self.pushButton_gohome_2.setFont(font)
-        self.pushButton_gohome_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_save = QPushButton(self.page_settings)
+        self.pushButton_save.setObjectName(u"pushButton_save")
+        self.pushButton_save.setMinimumSize(QSize(0, 60))
+        self.pushButton_save.setFont(font)
+        self.pushButton_save.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.horizontalLayout_bottom.addWidget(self.pushButton_gohome_2)
+        self.horizontalLayout_bottom.addWidget(self.pushButton_save)
 
-        self.toolButton = QToolButton(self.page_settings)
-        self.toolButton.setObjectName(u"toolButton")
-        self.toolButton.setMinimumSize(QSize(30, 60))
+        self.toolButton_reset = QToolButton(self.page_settings)
+        self.toolButton_reset.setObjectName(u"toolButton_reset")
+        self.toolButton_reset.setMinimumSize(QSize(30, 60))
         font5 = QFont()
         font5.setItalic(True)
-        self.toolButton.setFont(font5)
+        self.toolButton_reset.setFont(font5)
 
-        self.horizontalLayout_bottom.addWidget(self.toolButton)
+        self.horizontalLayout_bottom.addWidget(self.toolButton_reset)
 
 
         self.verticalLayout_7.addLayout(self.horizontalLayout_bottom)
@@ -518,7 +523,9 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuMenu.menuAction())
+        self.menuMenu.addAction(self.actionHome)
         self.menuMenu.addAction(self.actionSettings)
+        self.menuMenu.addSeparator()
         self.menuMenu.addAction(self.actionExit)
 
         self.retranslateUi(MainWindow)
@@ -534,7 +541,11 @@ class Ui_MainWindow(object):
         self.actionExit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.actionSettings.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
 #if QT_CONFIG(shortcut)
-        self.actionSettings.setShortcut(QCoreApplication.translate("MainWindow", u"F1", None))
+        self.actionSettings.setShortcut(QCoreApplication.translate("MainWindow", u"F2", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionHome.setText(QCoreApplication.translate("MainWindow", u"Home", None))
+#if QT_CONFIG(shortcut)
+        self.actionHome.setShortcut(QCoreApplication.translate("MainWindow", u"F1", None))
 #endif // QT_CONFIG(shortcut)
         self.lineEdit_password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"P A S S W O R D", None))
 #if QT_CONFIG(tooltip)
@@ -601,13 +612,13 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.spinBox_checkScore.setToolTip(QCoreApplication.translate("MainWindow", u"Parolan\u0131z\u0131n G\u00fc\u00e7 S\u0131n\u0131r\u0131n\u0131z\u0131 Belirler. (\u00d6nerilen 0,66 De\u011fi\u015ftirilmesi \u00d6nerilmez.)", None))
 #endif // QT_CONFIG(tooltip)
-        self.pushButton_gohome_2.setText(QCoreApplication.translate("MainWindow", u"Home Page", None))
+        self.pushButton_save.setText(QCoreApplication.translate("MainWindow", u"Save", None))
 #if QT_CONFIG(tooltip)
-        self.toolButton.setToolTip(QCoreApplication.translate("MainWindow", u"Reset to default (Press R)", None))
+        self.toolButton_reset.setToolTip(QCoreApplication.translate("MainWindow", u"Reset to default (Press R)", None))
 #endif // QT_CONFIG(tooltip)
-        self.toolButton.setText(QCoreApplication.translate("MainWindow", u"R", None))
+        self.toolButton_reset.setText(QCoreApplication.translate("MainWindow", u"R", None))
 #if QT_CONFIG(shortcut)
-        self.toolButton.setShortcut(QCoreApplication.translate("MainWindow", u"R", None))
+        self.toolButton_reset.setShortcut(QCoreApplication.translate("MainWindow", u"R", None))
 #endif // QT_CONFIG(shortcut)
         self.menuMenu.setTitle(QCoreApplication.translate("MainWindow", u"Menu", None))
     # retranslateUi
