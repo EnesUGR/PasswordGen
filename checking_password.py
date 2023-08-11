@@ -29,7 +29,7 @@ class Checking:
         weak = self.password.weakness_factor
 
         chars = dict()
-        definitaions = {'L': 'letter', 'M': 'Mark', 'N': 'Number', 'P': 'Punctuation', 'S': 'Symbol', 'Z': 'Separator', 'C': 'Other'}
+        definitaions = {'L': 'Letter', 'M': 'Mark', 'N': 'Number', 'P': 'Punctuation', 'S': 'Symbol', 'Z': 'Separator', 'C': 'Other'}
         for _ in list(self.password.char_categories.items()):
             chars[definitaions[_[0]]] = _[1]
 
@@ -43,18 +43,18 @@ class Checking:
         length = self.password.length
 
         result = {
-            "score":score,
-            "eabits":eabits,
-            "weak":weak,
+            "score":str(score),
+            "eabits":str(eabits),
+            "weak":str(weak),
+            "length":str(length),
+            "letters":str(letters),
+            "uppercase":str(uc),
+            "lowercase":str(lc),
+            "specialcase":str(sc),
+            "nums":str(nums),
+            "repeatedpattern":str(rp),
             "chars":chars,
-            "combs":combs,
-            "nums":nums,
-            "letters":letters,
-            "uppercase":uc,
-            "lowercase":lc,
-            "specialcase":sc,
-            "repeatedpattern":rp,
-            "length":length
+            "combs":str(combs)
         }
         return result
 
