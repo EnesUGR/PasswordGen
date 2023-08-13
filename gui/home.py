@@ -24,6 +24,7 @@ class Home(QMainWindow):
         self.ui.actionSettings.triggered.connect(lambda : self.ui.stackedWidget.setCurrentWidget(self.ui.page_settings))
         self.ui.pushButton_save.clicked.connect(self.save_settings)
         self.ui.toolButton_reset.clicked.connect(lambda : self.setupUi(reset=True))
+        self.ui.actionExit.triggered.connect(lambda : exit())
 
 
     def copy_password(self):
