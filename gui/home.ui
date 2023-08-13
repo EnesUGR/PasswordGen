@@ -121,8 +121,14 @@
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(Press Enter)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Generate Password</string>
+            </property>
+            <property name="shortcut">
+             <string>Return</string>
             </property>
            </widget>
           </item>
@@ -142,8 +148,14 @@
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(Press Shift+Enter)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Check Password</string>
+            </property>
+            <property name="shortcut">
+             <string>Shift+Return</string>
             </property>
            </widget>
           </item>
