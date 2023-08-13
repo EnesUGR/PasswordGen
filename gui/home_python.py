@@ -473,6 +473,7 @@ class Ui_MainWindow(object):
         self.spinBox_checkScore = QDoubleSpinBox(self.groupBox_2)
         self.spinBox_checkScore.setObjectName(u"spinBox_checkScore")
         self.spinBox_checkScore.setMaximum(1.000000000000000)
+        self.spinBox_checkScore.setSingleStep(0.010000000000000)
         self.spinBox_checkScore.setValue(0.660000000000000)
 
         self.horizontalLayout_9.addWidget(self.spinBox_checkScore)
