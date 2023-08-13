@@ -1,6 +1,6 @@
 # pyside6-uic .\home.ui -o .\home_python.py
 import sys
-from PySide6.QtWidgets import QApplication,QMainWindow
+from PySide6.QtWidgets import QApplication,QMainWindow,QCheckBox
 from gui.home_python import Ui_MainWindow
 from generating_password import generate_password
 from checking_password import Checking
@@ -30,6 +30,7 @@ class Home(QMainWindow):
         self.ui.lineEdit_password.selectAll()
         self.ui.lineEdit_password.copy()
         self.ui.lineEdit_password.deselect()
+        self.ui.statusbar.showMessage("Successfull!",1000)
 
 
     def generate(self):
@@ -104,6 +105,17 @@ class Home(QMainWindow):
         # settings
         self.save_settings()
         self.set_tool_tips()
+        #checkbox changed
+        def changed():
+            for cb in cs:
+                if cb.objectName() == "checkBox_AZ" or cb.objectName() == "checkBox_az" or cb.objectName() == "checkBox_09":
+                    if cb.isChecked(): return None
+                    else: continue
+            self.ui.statusbar.showMessage("You must choose at least one of the first three options.", 3000)
+            self.ui.checkBox_AZ.setChecked(True) #Default
+
+        cs:list[QCheckBox] = self.ui.groupBox_1.findChildren(QCheckBox)
+        for c in cs: c.clicked.connect(changed)
 
 
     def set_tool_tips(self):
