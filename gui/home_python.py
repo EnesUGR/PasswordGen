@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'home.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.2
+## Created by: Qt User Interface Compiler version 6.5.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -22,12 +22,16 @@ from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QDoubl
     QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
     QSpinBox, QStackedWidget, QStatusBar, QToolButton,
     QVBoxLayout, QWidget)
+import resource_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(545, 599)
+        icon = QIcon()
+        icon.addFile(u":/icon/icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.actionExit = QAction(MainWindow)
         self.actionExit.setObjectName(u"actionExit")
         self.actionSettings = QAction(MainWindow)
