@@ -1,6 +1,6 @@
 # pyside6-uic .\home.ui -o .\home_python.py
 import sys
-from PySide6.QtWidgets import QApplication,QMainWindow,QCheckBox
+from PySide6.QtWidgets import QApplication,QMainWindow,QCheckBox,QFileDialog
 from gui.home_python import Ui_MainWindow
 from generating_password import generate_password
 from checking_password import Checking
@@ -25,6 +25,8 @@ class Home(QMainWindow):
         self.ui.pushButton_save.clicked.connect(self.save_settings)
         self.ui.toolButton_reset.clicked.connect(lambda : self.setupUi(reset=True))
         self.ui.actionExit.triggered.connect(lambda : exit())
+        self.ui.toolButton_toFile.clicked.connect(self.save_to_file)
+        self.ui.spinBox_toFileAmount.valueChanged.connect(lambda : self.ui.lineEdit_toFilePath.clear())
 
 
     def copy_password(self):
@@ -34,10 +36,11 @@ class Home(QMainWindow):
         self.ui.statusbar.showMessage("Successfull!",1000)
 
 
-    def generate(self):
+    def generate(self, tofile=False) -> str:
         pgo = self.settings.getSettings["pgo"]
         p = generate_password(pgo["length"], pgo["AZ"], pgo["az_"], pgo["nu"], pgo["sc"])
-        self.ui.lineEdit_password.setText(p)
+        if not tofile: self.ui.lineEdit_password.setText(p); return ""
+        else: return p
 
 
     def check(self):
@@ -142,6 +145,20 @@ class Home(QMainWindow):
                                    self.ui.spinBox_checkEntropybits.value(),self.ui.spinBox_checkScore.value())
         if self.ui.labelChecking_password.text() != "PASSWORD": self.ui.statusbar.showMessage("Successfull!",2000)
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
+
+
+    def save_to_file(self):
+        if self.ui.spinBox_toFileAmount.value() == 0: self.ui.statusbar.showMessage("You must enter the amount first.!",2000) ; return None
+
+        f = QFileDialog.getSaveFileName(self,"Save to File",".","TXT File (*.txt)")
+        if f[0]:
+            self.ui.lineEdit_toFilePath.setText(f[0])
+            amount = self.ui.spinBox_toFileAmount.value()
+            plist = []
+            for i in range(amount): plist.append(self.generate(tofile=True) + "\n")
+            with open(f[0],"w",encoding="UTF-8") as file:
+                file.writelines(plist)
+        self.ui.statusbar.showMessage("Successfull!",3000)
 
 
 

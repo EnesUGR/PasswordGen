@@ -16,12 +16,12 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QDoubleSpinBox, QGridLayout,
-    QGroupBox, QHBoxLayout, QLabel, QLayout,
-    QLineEdit, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
-    QStackedWidget, QStatusBar, QToolButton, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QDoubleSpinBox,
+    QGridLayout, QGroupBox, QHBoxLayout, QLabel,
+    QLayout, QLineEdit, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QStackedWidget, QStatusBar, QToolButton,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -74,6 +74,37 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(-1, 20, -1, -1)
+        self.toolButton_toFile = QToolButton(self.page_home)
+        self.toolButton_toFile.setObjectName(u"toolButton_toFile")
+        self.toolButton_toFile.setEnabled(True)
+        self.toolButton_toFile.setMinimumSize(QSize(0, 30))
+        self.toolButton_toFile.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_11.addWidget(self.toolButton_toFile)
+
+        self.lineEdit_toFilePath = QLineEdit(self.page_home)
+        self.lineEdit_toFilePath.setObjectName(u"lineEdit_toFilePath")
+        self.lineEdit_toFilePath.setEnabled(True)
+        self.lineEdit_toFilePath.setMinimumSize(QSize(0, 30))
+        self.lineEdit_toFilePath.setReadOnly(True)
+
+        self.horizontalLayout_11.addWidget(self.lineEdit_toFilePath)
+
+        self.spinBox_toFileAmount = QSpinBox(self.page_home)
+        self.spinBox_toFileAmount.setObjectName(u"spinBox_toFileAmount")
+        self.spinBox_toFileAmount.setMinimumSize(QSize(0, 30))
+        self.spinBox_toFileAmount.setAlignment(Qt.AlignCenter)
+        self.spinBox_toFileAmount.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.spinBox_toFileAmount.setMaximum(99)
+
+        self.horizontalLayout_11.addWidget(self.spinBox_toFileAmount)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_11)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -558,6 +589,10 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.toolButton_copy.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+C", None))
 #endif // QT_CONFIG(shortcut)
+        self.toolButton_toFile.setText(QCoreApplication.translate("MainWindow", u"Save to File", None))
+#if QT_CONFIG(tooltip)
+        self.spinBox_toFileAmount.setToolTip(QCoreApplication.translate("MainWindow", u"Maximum: 99", None))
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         self.pushButton_generatePassword.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>(Press Enter)</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
