@@ -1,13 +1,13 @@
 # pyside6-uic .\home.ui -o .\home_python.py
 import sys
-from PySide6.QtWidgets import QApplication,QMainWindow,QCheckBox,QFileDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QCheckBox, QFileDialog, QMessageBox
 from gui.home_python import Ui_MainWindow
 from generating_password import generate_password
 from checking_password import Checking
 from gui.settings import Settings
 
 class Home(QMainWindow):
-    def __init__(self,appname:str):
+    def __init__(self,appname:str,version:str):
         super().__init__()
 
         self.ui = Ui_MainWindow()
@@ -27,6 +27,7 @@ class Home(QMainWindow):
         self.ui.actionExit.triggered.connect(lambda : exit())
         self.ui.toolButton_toFile.clicked.connect(self.save_to_file)
         self.ui.spinBox_toFileAmount.valueChanged.connect(lambda : self.ui.lineEdit_toFilePath.clear())
+        self.ui.actionAbout.triggered.connect(lambda : QMessageBox.about(self,appname,f"{appname} {version}\n\nDeveloped by Enes Ugur\nContact: https://enesugr.github.io/"))
 
 
     def copy_password(self):
@@ -164,9 +165,9 @@ class Home(QMainWindow):
 
 
 
-def run_ui(appname:str):
+def run_ui(appname:str,version:str):
     app = QApplication([])
-    win = Home(appname)
+    win = Home(appname,version)
     win.show()
     sys.exit(app.exec())
 

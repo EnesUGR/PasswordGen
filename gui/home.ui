@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>524</width>
+    <width>545</width>
     <height>599</height>
    </rect>
   </property>
@@ -145,7 +145,7 @@
              <set>Qt::AlignCenter</set>
             </property>
             <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
+             <enum>QAbstractSpinBox::UpDownArrows</enum>
             </property>
             <property name="maximum">
              <number>99</number>
@@ -1003,7 +1003,7 @@ Patterns</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>524</width>
+     <width>545</width>
      <height>22</height>
     </rect>
    </property>
@@ -1014,6 +1014,7 @@ Patterns</string>
     <addaction name="actionHome"/>
     <addaction name="actionSettings"/>
     <addaction name="separator"/>
+    <addaction name="actionAbout"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuMenu"/>
@@ -1038,6 +1039,11 @@ Patterns</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>
