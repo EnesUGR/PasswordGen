@@ -807,7 +807,7 @@ Patterns</string>
                <item>
                 <widget class="QLabel" name="label_18">
                  <property name="toolTip">
-                  <string>Entropi bitleri, şifrenizin ne kadar çeşitliliğe sahip olduğunu tanımlayan bir kavramdır.</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Entropy bits are a concept that defines how diverse your password has.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="text">
                   <string>Entropybits:</string>
@@ -816,9 +816,6 @@ Patterns</string>
                </item>
                <item>
                 <widget class="QSpinBox" name="spinBox_checkEntropybits">
-                 <property name="toolTip">
-                  <string>Entropi bitleri, şifrenizin ne kadar çeşitliliğe sahip olduğunu tanımlayan bir kavramdır.</string>
-                 </property>
                  <property name="whatsThis">
                   <string/>
                  </property>
@@ -840,7 +837,7 @@ Patterns</string>
                <item>
                 <widget class="QLabel" name="label_19">
                  <property name="toolTip">
-                  <string>Entropi bitleri önemlidir, ancak anlaşılması zordur. Daha da iyi, daha sezgisel bir test, parolanın &quot;yeterince karmaşık&quot; olmasını gerektirmektir. Karmaşıklık, 0.00..0.99 aralığında bir sayıdır. İyi, güçlü şifreler 0,66'dan başlar.</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Entropy bits are important, but difficult to understand. An even better, more intuitive test is to require the password to be &amp;quot;complex enough&amp;quot;. Complexity is a number in the range of 0.00..0.99. Good, strong passwords start at 0.66.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="text">
                   <string>Strength:</string>
@@ -849,9 +846,6 @@ Patterns</string>
                </item>
                <item>
                 <widget class="QDoubleSpinBox" name="spinBox_checkScore">
-                 <property name="toolTip">
-                  <string>Parolanızın Güç Sınırınızı Belirler. (Önerilen 0,66 Değiştirilmesi Önerilmez.)</string>
-                 </property>
                  <property name="maximum">
                   <double>1.000000000000000</double>
                  </property>

@@ -7,13 +7,15 @@ from checking_password import Checking
 from gui.settings import Settings
 
 class Home(QMainWindow):
-    def __init__(self):
+    def __init__(self,appname:str):
         super().__init__()
+
         self.ui = Ui_MainWindow()
-        self.settings = Settings()
+        self.settings = Settings(appname)
         self.ui.setupUi(self)
-        self.set_tool_tips()
-        self.save_settings()
+        self.setupUi()
+        if self.settings.isEmpty: self.save_settings()
+
         self.ui.pushButton_generatePassword.clicked.connect(self.generate)
         self.ui.toolButton_copy.clicked.connect(self.copy_password)
         self.ui.pushButton_check.clicked.connect(self.check)
@@ -21,17 +23,20 @@ class Home(QMainWindow):
         self.ui.pushButton_gohome.clicked.connect(lambda : self.ui.stackedWidget.setCurrentWidget(self.ui.page_home))
         self.ui.actionSettings.triggered.connect(lambda : self.ui.stackedWidget.setCurrentWidget(self.ui.page_settings))
         self.ui.pushButton_save.clicked.connect(self.save_settings)
-        self.ui.toolButton_reset.clicked.connect(self.reset_default)
+        self.ui.toolButton_reset.clicked.connect(lambda : self.setupUi(reset=True))
+
 
     def copy_password(self):
         self.ui.lineEdit_password.selectAll()
         self.ui.lineEdit_password.copy()
         self.ui.lineEdit_password.deselect()
 
+
     def generate(self):
         pgo = self.settings.getSettings["pgo"]
-        p = generate_password(pgo["length"], pgo["AZ"], pgo["az"], pgo["nu"], pgo["sc"])
+        p = generate_password(pgo["length"], pgo["AZ"], pgo["az_"], pgo["nu"], pgo["sc"])
         self.ui.lineEdit_password.setText(p)
+
 
     def check(self):
         pw = self.ui.lineEdit_password.text()
@@ -78,6 +83,29 @@ class Home(QMainWindow):
             else:self.ui.labelChecking_password.setStyleSheet("color: #8d5501;")
         diff_color()
 
+
+    def setupUi(self,reset=False):
+        pgo = self.settings.getSettings["pgo"]
+        pcp = self.settings.getSettings["pcp"]
+
+        # generation
+        self.ui.checkBox_AZ.setChecked(True if reset else pgo["AZ"])
+        self.ui.checkBox_az.setChecked(True if reset else pgo["az_"])
+        self.ui.checkBox_09.setChecked(True if reset else pgo["nu"])
+        self.ui.checkBox_SpecialChars.setChecked(True if reset else pgo["sc"])
+        self.ui.spinBox_length.setValue(8 if reset else pgo["length"])
+        # policy
+        self.ui.spinBox_checkLength.setValue(8 if reset else pcp["length"])
+        self.ui.spinBox_checkUppercase.setValue(2 if reset else pcp["upperC"])
+        self.ui.spinBox_checkNumbers.setValue(2 if reset else pcp["numbersC"])
+        self.ui.spinBox_checkSpecial.setValue(2 if reset else pcp["specialC"])
+        self.ui.spinBox_checkEntropybits.setValue(30 if reset else pcp["eabitC"])
+        self.ui.spinBox_checkScore.setValue(0.66 if reset else pcp["strengthC"])
+        # settings
+        self.save_settings()
+        self.set_tool_tips()
+
+
     def set_tool_tips(self):
         self.ui.labelChecking_score.setToolTip('An even better, more intuitive test, is to require the password to be "complex enough". Complexity is a number in the range of 0.00..0.99. Good, strong passwords start at 0.66.')
         self.ui.label_1.setToolTip('An even better, more intuitive test, is to require the password to be "complex enough". Complexity is a number in the range of 0.00..0.99. Good, strong passwords start at 0.66.')
@@ -92,20 +120,6 @@ class Home(QMainWindow):
         self.ui.labelChecking_chars.setToolTip("""Character count per top-level category. The following top-level categories are defined\nL: letter\nM: Mark\nN: Number\nP: Punctuation\nS: Symbol\nZ: Separator\nC: Other""")
         self.ui.label_12.setToolTip("""Character count per top-level category. The following top-level categories are defined\nL: letter\nM: Mark\nN: Number\nP: Punctuation\nS: Symbol\nZ: Separator\nC: Other""")
 
-    def reset_default(self):
-        #generation
-        self.ui.checkBox_AZ.setChecked(True)
-        self.ui.checkBox_az.setChecked(True)
-        self.ui.checkBox_09.setChecked(True)
-        self.ui.checkBox_SpecialChars.setChecked(True)
-        self.ui.spinBox_length.setValue(8)
-        #policy
-        self.ui.spinBox_checkLength.setValue(8)
-        self.ui.spinBox_checkUppercase.setValue(2)
-        self.ui.spinBox_checkNumbers.setValue(2)
-        self.ui.spinBox_checkSpecial.setValue(2)
-        self.ui.spinBox_checkEntropybits.setValue(30)
-        self.ui.spinBox_checkScore.setValue(0.66)
 
     def save_settings(self):
         self.settings.saveSettings(self.ui.checkBox_AZ.isChecked(),self.ui.checkBox_az.isChecked(),self.ui.checkBox_09.isChecked(),
@@ -120,9 +134,9 @@ class Home(QMainWindow):
 
 
 
-def run_ui():
+def run_ui(appname:str):
     app = QApplication([])
-    win = Home()
+    win = Home(appname)
     win.show()
     sys.exit(app.exec())
 
