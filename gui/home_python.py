@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'home.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.1
+## Created by: Qt User Interface Compiler version 6.5.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -40,6 +40,8 @@ class Ui_MainWindow(object):
         self.actionHome.setObjectName(u"actionHome")
         self.actionAbout = QAction(MainWindow)
         self.actionAbout.setObjectName(u"actionAbout")
+        self.actionSelectTheme = QAction(MainWindow)
+        self.actionSelectTheme.setObjectName(u"actionSelectTheme")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -563,6 +565,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuMenu.menuAction())
+        self.menuMenu.addAction(self.actionSelectTheme)
         self.menuMenu.addAction(self.actionHome)
         self.menuMenu.addAction(self.actionSettings)
         self.menuMenu.addSeparator()
@@ -589,6 +592,7 @@ class Ui_MainWindow(object):
         self.actionHome.setShortcut(QCoreApplication.translate("MainWindow", u"F1", None))
 #endif // QT_CONFIG(shortcut)
         self.actionAbout.setText(QCoreApplication.translate("MainWindow", u"About", None))
+        self.actionSelectTheme.setText(QCoreApplication.translate("MainWindow", u"Select Theme...", None))
         self.lineEdit_password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"P A S S W O R D", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_copy.setToolTip(QCoreApplication.translate("MainWindow", u"Copy password (Press Ctrl+C)", None))

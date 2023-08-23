@@ -1015,6 +1015,7 @@ Patterns</string>
     <property name="title">
      <string>Menu</string>
     </property>
+    <addaction name="actionSelectTheme"/>
     <addaction name="actionHome"/>
     <addaction name="actionSettings"/>
     <addaction name="separator"/>
@@ -1048,6 +1049,11 @@ Patterns</string>
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionSelectTheme">
+   <property name="text">
+    <string>Select Theme...</string>
    </property>
   </action>
  </widget>

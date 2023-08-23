@@ -94,19 +94,22 @@ class Home(QMainWindow):
         pgo = self.settings.getSettings["pgo"]
         pcp = self.settings.getSettings["pcp"]
 
-        # generation
-        self.ui.checkBox_AZ.setChecked(True if reset else pgo["AZ"])
-        self.ui.checkBox_az.setChecked(True if reset else pgo["az_"])
-        self.ui.checkBox_09.setChecked(True if reset else pgo["nu"])
-        self.ui.checkBox_SpecialChars.setChecked(True if reset else pgo["sc"])
-        self.ui.spinBox_length.setValue(8 if reset else pgo["length"])
-        # policy
-        self.ui.spinBox_checkLength.setValue(8 if reset else pcp["length"])
-        self.ui.spinBox_checkUppercase.setValue(2 if reset else pcp["upperC"])
-        self.ui.spinBox_checkNumbers.setValue(2 if reset else pcp["numbersC"])
-        self.ui.spinBox_checkSpecial.setValue(2 if reset else pcp["specialC"])
-        self.ui.spinBox_checkEntropybits.setValue(30 if reset else pcp["eabitC"])
-        self.ui.spinBox_checkScore.setValue(0.66 if reset else pcp["strengthC"])
+        try:
+            # generation
+            self.ui.checkBox_AZ.setChecked(True if reset else pgo["AZ"])
+            self.ui.checkBox_az.setChecked(True if reset else pgo["az_"])
+            self.ui.checkBox_09.setChecked(True if reset else pgo["nu"])
+            self.ui.checkBox_SpecialChars.setChecked(True if reset else pgo["sc"])
+            self.ui.spinBox_length.setValue(8 if reset else pgo["length"])
+            # policy
+            self.ui.spinBox_checkLength.setValue(8 if reset else pcp["length"])
+            self.ui.spinBox_checkUppercase.setValue(2 if reset else pcp["upperC"])
+            self.ui.spinBox_checkNumbers.setValue(2 if reset else pcp["numbersC"])
+            self.ui.spinBox_checkSpecial.setValue(2 if reset else pcp["specialC"])
+            self.ui.spinBox_checkEntropybits.setValue(30 if reset else pcp["eabitC"])
+            self.ui.spinBox_checkScore.setValue(0.66 if reset else pcp["strengthC"])
+        except KeyError:
+            pass
         # settings
         self.save_settings()
         self.set_tool_tips()
