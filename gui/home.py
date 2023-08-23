@@ -113,6 +113,7 @@ class Home(QMainWindow):
 
         try:
             #general
+            print("theme:",general["theme"])
             self.select_theme(general["theme"])
             # generation
             self.ui.checkBox_AZ.setChecked(True if reset else pgo["AZ"])

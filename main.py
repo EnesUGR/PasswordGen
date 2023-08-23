@@ -3,7 +3,7 @@ from gui.settings import Settings
 
 
 APPNAME = "PasswordGen"
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 
 
 if __name__ == '__main__':

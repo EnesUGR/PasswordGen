@@ -49,15 +49,20 @@ class Settings:
             try:
                 y = winreg.EnumValue(pcp,i) #6 pieces
                 self.__settings["pcp"][y[0]] = int(y[1]) if y[1].find(".") == -1 else float(y[1])
-
-                x = winreg.EnumValue(pgo,i) #5 pieces
+                i+=1
+            except WindowsError: i = 0; break
+        while True:
+            try:
+                x = winreg.EnumValue(pgo, i)  # 5 pieces
                 self.__settings["pgo"][x[0]] = bool(x[1]) if x[1] <= 1 else x[1]
-
+                i+=1
+            except WindowsError: i = 0; break
+        while True:
+            try:
                 z = winreg.EnumValue(general, i)
                 self.__settings["general"][z[0]] = z[1]
-                i += 1
-            except WindowsError:
-                break
+                i+=1
+            except WindowsError: break
 
 
     def __writeSettings(self):
