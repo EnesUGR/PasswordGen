@@ -1,6 +1,8 @@
-# pyside6-uic .\home.ui -o .\home_python.py
+# pyside6-uic .\gui\home.ui -o .\gui\home_python.py
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QCheckBox, QFileDialog, QMessageBox
+
+import qdarktheme
+from PySide6.QtWidgets import QApplication, QMainWindow, QCheckBox, QFileDialog, QMessageBox, QInputDialog
 from gui.home_python import Ui_MainWindow
 from generating_password import generate_password
 from checking_password import Checking
@@ -28,6 +30,20 @@ class Home(QMainWindow):
         self.ui.toolButton_toFile.clicked.connect(self.save_to_file)
         self.ui.spinBox_toFileAmount.valueChanged.connect(lambda : self.ui.lineEdit_toFilePath.clear())
         self.ui.actionAbout.triggered.connect(lambda : QMessageBox.about(self,appname,f"{appname} {version}\n\nDeveloped by Enes Ugur\nContact: https://enesugr.github.io/"))
+        self.ui.actionSelectTheme.triggered.connect(lambda : self.select_theme())
+
+
+    def select_theme(self, themeName=None):
+        if themeName is not None:
+            qdarktheme.setup_theme(themeName)
+            return
+
+        themes = [t.capitalize() for t in qdarktheme.get_themes()]
+        theme, _ = QInputDialog.getItem(self,"Select Theme","Select Theme",themes,current=0,editable=False)
+        if _:
+            qdarktheme.setup_theme(theme.lower())
+            self.settings.saveSettingsGeneral(theme=theme.lower())
+            self.ui.statusbar.showMessage(f"Select Theme: {theme}",2000)
 
 
     def copy_password(self):
@@ -93,8 +109,11 @@ class Home(QMainWindow):
     def setupUi(self,reset=False):
         pgo = self.settings.getSettings["pgo"]
         pcp = self.settings.getSettings["pcp"]
+        general = self.settings.getSettings["general"]
 
         try:
+            #general
+            self.select_theme(general["theme"])
             # generation
             self.ui.checkBox_AZ.setChecked(True if reset else pgo["AZ"])
             self.ui.checkBox_az.setChecked(True if reset else pgo["az_"])
@@ -142,11 +161,11 @@ class Home(QMainWindow):
 
 
     def save_settings(self):
-        self.settings.saveSettings(self.ui.checkBox_AZ.isChecked(),self.ui.checkBox_az.isChecked(),self.ui.checkBox_09.isChecked(),
-                                   self.ui.checkBox_SpecialChars.isChecked(),self.ui.spinBox_length.value(),
-                                   self.ui.spinBox_checkLength.value(),self.ui.spinBox_checkUppercase.value(),
-                                   self.ui.spinBox_checkNumbers.value(),self.ui.spinBox_checkSpecial.value(),
-                                   self.ui.spinBox_checkEntropybits.value(),self.ui.spinBox_checkScore.value())
+        self.settings.saveSettingsOptions(self.ui.checkBox_AZ.isChecked(), self.ui.checkBox_az.isChecked(), self.ui.checkBox_09.isChecked(),
+                                          self.ui.checkBox_SpecialChars.isChecked(), self.ui.spinBox_length.value(),
+                                          self.ui.spinBox_checkLength.value(), self.ui.spinBox_checkUppercase.value(),
+                                          self.ui.spinBox_checkNumbers.value(), self.ui.spinBox_checkSpecial.value(),
+                                          self.ui.spinBox_checkEntropybits.value(), self.ui.spinBox_checkScore.value())
         if self.ui.labelChecking_password.text() != "PASSWORD": self.ui.statusbar.showMessage("Successfull!",2000)
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
 

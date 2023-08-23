@@ -2,13 +2,13 @@ import winreg
 
 class Settings:
     def __init__(self,appname:str):
-        self.__settings = {"pgo":{},"pcp":{}} #Password Generate Options,Password Check Policy
+        self.__settings = {"pgo":{},"pcp":{}, "general":{}} #Password Generate Options,Password Check Policy, General App Settings
         self.__appname = appname
         self.__readSettings()
 
 
-    def saveSettings(self, AZ:bool, az_:bool, nu:bool, sc:bool, length:int, lengthC:int, upperC:int, numbersC:int,
-                     specialC:int, eabitC:int, strengthC:float):
+    def saveSettingsOptions(self, AZ:bool, az_:bool, nu:bool, sc:bool, length:int, lengthC:int, upperC:int, numbersC:int,
+                            specialC:int, eabitC:int, strengthC:float):
         self.__settings["pgo"]["AZ"] = AZ
         self.__settings["pgo"]["az_"] = az_
         self.__settings["pgo"]["nu"] = nu
@@ -20,6 +20,11 @@ class Settings:
         self.__settings["pcp"]["specialC"] = specialC
         self.__settings["pcp"]["eabitC"] = eabitC
         self.__settings["pcp"]["strengthC"] = strengthC
+        self.__writeSettings()
+
+
+    def saveSettingsGeneral(self, **kwargs):
+        self.__settings["general"]["theme"] = kwargs["theme"]
         self.__writeSettings()
 
 
@@ -37,6 +42,8 @@ class Settings:
         soft = winreg.OpenKeyEx(winreg.HKEY_CURRENT_USER, r"SOFTWARE\\")
         pgo = winreg.OpenKeyEx(soft,r"{0}\\pgo".format(self.__appname),0,winreg.KEY_READ)
         pcp = winreg.OpenKeyEx(soft,r"{0}\\pcp".format(self.__appname),0,winreg.KEY_QUERY_VALUE)
+        general = winreg.OpenKeyEx(soft,r"{0}\\general".format(self.__appname),0,winreg.KEY_QUERY_VALUE)
+
         i = 0
         while True:
             try:
@@ -46,6 +53,8 @@ class Settings:
                 x = winreg.EnumValue(pgo,i) #5 pieces
                 self.__settings["pgo"][x[0]] = bool(x[1]) if x[1] <= 1 else x[1]
 
+                z = winreg.EnumValue(general, i)
+                self.__settings["general"][z[0]] = z[1]
                 i += 1
             except WindowsError:
                 break
@@ -56,15 +65,19 @@ class Settings:
         soft = winreg.OpenKeyEx(winreg.HKEY_CURRENT_USER, r"SOFTWARE\\")
         pgo = winreg.OpenKeyEx(soft,r"{0}\\pgo".format(self.__appname),0,winreg.KEY_SET_VALUE)
         pcp = winreg.OpenKeyEx(soft,r"{0}\\pcp".format(self.__appname),0,winreg.KEY_SET_VALUE)
+        general = winreg.OpenKeyEx(soft,r"{0}\\general".format(self.__appname),0,winreg.KEY_SET_VALUE)
 
         for k,v in self.__settings["pgo"].items():
             winreg.SetValueEx(pgo,k,0,winreg.REG_DWORD,v)
         for k,v in self.__settings["pcp"].items():
             winreg.SetValueEx(pcp,k,0,winreg.REG_SZ,str(v))
+        for k,v in self.__settings["general"].items():
+            winreg.SetValueEx(general,k,0,winreg.REG_SZ,str(v))
 
         winreg.CloseKey(soft)
         winreg.CloseKey(pgo)
         winreg.CloseKey(pcp)
+        winreg.CloseKey(general)
 
 
     @staticmethod
@@ -73,7 +86,9 @@ class Settings:
         soft = winreg.OpenKeyEx(loc,r"SOFTWARE\\")
         mysoft_pgo = winreg.CreateKey(soft,r"{0}\\pgo".format(appname))
         mysoft_pcp = winreg.CreateKey(soft,r"{0}\\pcp".format(appname))
+        mysoft_general = winreg.CreateKey(soft,r"{0}\\general".format(appname))
 
         winreg.CloseKey(soft)
         winreg.CloseKey(mysoft_pgo)
         winreg.CloseKey(mysoft_pcp)
+        winreg.CloseKey(mysoft_general)
